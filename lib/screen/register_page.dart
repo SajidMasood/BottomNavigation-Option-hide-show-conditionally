@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterPage extends StatefulWidget {
-   final VoidCallback? onRegisterPressed;
-   RegisterPage({super.key, this.onRegisterPressed});
+  final VoidCallback? onRegisterPressed;
+  RegisterPage({super.key, this.onRegisterPressed});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -28,11 +28,10 @@ class _RegisterPageState extends State<RegisterPage> {
               debugPrint("Register button pressed....");
 
               // ------------------------------------
-              //  if (onRegisterPressed != null) {
-              //   onRegisterPressed!();
-              // }
+
               // ------------------------------------
               _onRegisterButtonPressed(context);
+              // widget.onRegisterPressed?.call();
             },
             child: const Text('Register',
                 textAlign: TextAlign.center,

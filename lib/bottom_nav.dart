@@ -18,22 +18,27 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
   bool _shouldShowRegisterOption = true;
-  List<Widget> _screens = [];
+  List<Widget> _screens = [
+
+  ];
 
   @override
   void initState() {
     super.initState();
     _loadRegisterOptionVisibility();
     // Initialize _screens here
-    _screens = [
-      HomePage(),
-      AboutPage(),
-      ContactPage(),
-      RegisterPage(
-        // Pass the callback function as a parameter to the RegisterPage
-        onRegisterPressed: _onRegisterButtonPressed,
-      ),
-    ];
+    // _screens = [
+    //   const HomePage(),
+    //   const AboutPage(),
+    //   const ContactPage(),
+    //   RegisterPage(
+    //     // Pass the callback function as a parameter to the RegisterPage
+    //     onRegisterPressed: _onRegisterButtonPressed,
+    //   ),
+    // ];
+
+    //////////
+    _updateScreens(); // Move the screen initialization to a separate method
   }
 
   _loadRegisterOptionVisibility() async {
@@ -49,6 +54,25 @@ class _BottomNavState extends State<BottomNav> {
     prefs.setBool('showRegisterOption', false);
     // Call the callback function to update the _shouldShowRegisterOption in this class
     _updateRegisterOptionVisibility(false);
+    // Update the _shouldShowRegisterOption and remove the RegisterPage from _screens
+    setState(() {
+      _shouldShowRegisterOption = false;
+      _updateScreens();
+      _selectedIndex = 0;
+    });
+  }
+
+  // Update _screens based on the value of _shouldShowRegisterOption
+  void _updateScreens() {
+    _screens = [
+      const HomePage(),
+      const AboutPage(),
+      const ContactPage(),
+      if (_shouldShowRegisterOption)
+        RegisterPage(
+          onRegisterPressed: _onRegisterButtonPressed,
+        ),
+    ];
   }
 
   // Create a callback function to be passed to the RegisterPage
@@ -68,16 +92,6 @@ class _BottomNavState extends State<BottomNav> {
 
   @override
   Widget build(BuildContext context) {
-    //   final _screens = [
-    //   HomePage(),
-    //   AboutPage(),
-    //   ContactPage(),
-    //   RegisterPage(
-    //     // Pass the callback function as a parameter to the RegisterPage
-    //     onRegisterPressed: _onRegisterButtonPressed,
-    //   ),
-
-    // ];
     return Scaffold(
       backgroundColor: Colors.blue.shade100,
       body: _screens[_selectedIndex],
@@ -108,20 +122,20 @@ class _BottomNavState extends State<BottomNav> {
           _onItemSelected(value);
         },
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.accessible_outlined),
             label: "About",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.phone_missed),
             label: "Contact",
           ),
           if (_shouldShowRegisterOption) // Show Register option conditionally
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.add_box),
               label: "Register",
             ),
