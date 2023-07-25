@@ -16,28 +16,15 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
+  
   int _selectedIndex = 0;
   bool _shouldShowRegisterOption = true;
-  List<Widget> _screens = [
-
-  ];
+  List<Widget> _screens = [];
 
   @override
   void initState() {
     super.initState();
     _loadRegisterOptionVisibility();
-    // Initialize _screens here
-    // _screens = [
-    //   const HomePage(),
-    //   const AboutPage(),
-    //   const ContactPage(),
-    //   RegisterPage(
-    //     // Pass the callback function as a parameter to the RegisterPage
-    //     onRegisterPressed: _onRegisterButtonPressed,
-    //   ),
-    // ];
-
-    //////////
     _updateScreens(); // Move the screen initialization to a separate method
   }
 
