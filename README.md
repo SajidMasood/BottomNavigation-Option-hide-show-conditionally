@@ -13,6 +13,7 @@ In Bottom Nav Item "Register" Register is Class and Stateful Widget -> In Regist
 when user click on this button i want to hide the "Register" option from Bottom Nav.
 
 # Using Shared Prefrences:
+![Screenshot_1690349684](https://github.com/SajidMasood/BottomNavigation-Option-hide-show-conditionally/assets/23151871/fa502f49-9aa4-4bc6-aaab-7e5aef5aa0d3)
 
 ![Screenshot_1690349688](https://github.com/SajidMasood/BottomNavigation-Option-hide-show-conditionally/assets/23151871/23850758-bc72-4a1f-9191-bc0877a3bc77)
 
